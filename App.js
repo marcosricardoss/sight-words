@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, Button, Text, View } from 'react-native';
+import styles from './src/styles';
 import shuffle from './src/shuffle'
 import allwords from './src/words.en.json'
 
@@ -85,30 +86,5 @@ export default class App extends Component {
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  welcome: {
-    fontSize: 10,
-    textAlign: 'center',
-    margin: 10,
-  },
-  word: {
-    fontSize: 50,
-    textAlign: 'center',
-    margin: 10,
-  },
-  results: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 30,
-  }
-});
 
 AppRegistry.registerComponent('BlitzReading', () => App);
