@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
 import { AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import allwords from './src/words.en.json'
+
+const PRACTICE_TIME = 10 * 1000;
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentScreen: 'welcome' };
+    this.state = { currentScreen: 'welcome',  totalWords: 0 };
     this.onPressPratice = this.onPressPratice.bind(this);
     this.onPressNextWord = this.onPressNextWord.bind(this);
   }
 
   onPressPratice() {
-    this.setState({ currentScreen: 'practice' });
+    setTimeout(() => (
+      this.setState({ currentScreen: 'results'})
+    ), PRACTICE_TIME);
+
+    const words = [...allwords];
+    const currentWord = words.shift();
+
+    this.setState({ 
+      currentScreen: 'practice',
+      currentWord,
+      words,
+      totalWords: 0
+    });
   }
 
   onPressNextWord() {
-    this.setState({ currentScreen: 'results'})
+    const { words, totalWords } = this.state;
+    const nextWord = words.shift();
+    this.setState({ 
+      currentWord: nextWord,
+      words,
+      totalWords: totalWords + 1
+    })
   }
+  
 
   renderWelcomeScreen() {
     return(
@@ -31,7 +53,7 @@ export default class App extends Component {
   renderPraticeScreen() {
     return (
       <View>
-        <Text style={styles.word}>word</Text>
+        <Text style={styles.word}>{this.state.currentWord}</Text>
         <Button 
           onPress={this.onPressNextWord}
           title="Next Word" />
@@ -43,7 +65,7 @@ export default class App extends Component {
     return(
       <View>
         <Text style={styles.welcome}>Results</Text>
-        <Text style={styles.results}>Words count: 0</Text>
+        <Text style={styles.results}>Words count: {this.state.totalWords}</Text>
         <Button 
           onPress={this.onPressPratice}
           title="Practice Again" />
@@ -81,7 +103,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  resulst: {
+  results: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 30,
