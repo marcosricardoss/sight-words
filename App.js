@@ -13,7 +13,7 @@ class App extends Component {
         <View>
           <Text style={styles.welcome}>Welcome to Blitz Reading!</Text>
           <Button 
-            onPress={this.props.navigation.navigate('Practice')}
+            onPress={() => this.props.navigation.navigate('Practice')}
             title="Practice" />
         </View>
       </View>
@@ -27,3 +27,5 @@ const AppNavigator = createSwitchNavigator({
   Results: ResultsScreen
 });
 export default createAppContainer(AppNavigator);
+
+AppRegistry.registerComponent('BlitzReading', () => App);
