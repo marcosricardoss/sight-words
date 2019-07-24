@@ -4,7 +4,6 @@ import {
   createSwitchNavigator, 
   createBottomTabNavigator, 
   createAppContainer } from 'react-navigation';
-import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import WelcomeScreen from './src/screens/WelcomeScreen';
