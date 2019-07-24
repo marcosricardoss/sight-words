@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, View, Text } from 'react-native';
 import styles from '../styles';
 import {fetchHighScores, mergeHighScores, saveHighScores } from '../storage/highScoreStorage';
+import HighScores from '../components/HighScores';
 
 export default class ResultsScreen extends Component {
   constructor(props){
@@ -34,6 +35,7 @@ export default class ResultsScreen extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>Results</Text>
         <Text style={styles.results}>Words count: {this.state.totalWords}</Text>
+        <HighScores data={this.state.highScores} />
         <Button 
           onPress={() => this.props.navigation.navigate('Practice')}
           title="Practice Again" />
