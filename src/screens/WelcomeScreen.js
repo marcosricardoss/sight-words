@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 
-import style from '../styles';
 import styles from '../styles';
 
 export default class WelcomeScreen extends Component {
