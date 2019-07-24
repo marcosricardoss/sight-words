@@ -8,10 +8,11 @@ import {
   StyleSheet,
   TouchableOpacity} from 'react-native';
 
-  import {
-    loadSettings,
-    saveSettings
-  } from '../storage/settingsStorage';
+import {
+  loadSettings,
+  saveSettings
+} from '../storage/settingsStorage';
+import SettingsList from '../components/SettingsList'
 
 export default class SettingsScreen extends Component {
   constructor(props) {
@@ -58,6 +59,9 @@ export default class SettingsScreen extends Component {
                   <Text style={styles.saveButtonText}>Save</Text>
                 </TouchableOpacity>
               </View>
+            </View>
+            <View style={styles.inputContainer}>
+              <SettingsList />
             </View>
           </ScrollView>
         </View>
