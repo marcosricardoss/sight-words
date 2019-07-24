@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default HighScores = ({ data }) => {  
-  const highScores = getTopScores(data);
+const DEFAULT_TOTAL_NUMBER = 10;
+
+export default HighScores = ({ data, totalNumber }) => {  
+  const highScores = getTopScores(data, totalNumber || DEFAULT_TOTAL_NUMBER);
   
   return (
     <View style={styles.container}>
@@ -42,10 +44,10 @@ const Row = ( {highScore, index}) => {
   );
 };
 
-const getTopScores = (highScores) => 
+const getTopScores = (highScores, totalNumber) => 
   highScores
     .sort((first, second) => second.score - first.score)
-    .slice(0, 10);
+    .slice(0, totalNumber);
 
 const styles = StyleSheet.create({
   container: {
