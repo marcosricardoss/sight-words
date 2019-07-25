@@ -39,7 +39,7 @@ class SplashScreen extends React.Component {
     return (
       <View style={styles.viewStyles}>
         <Text style={styles.textStyles}>
-          Blitz Reading
+          {i18n.t('appName')}
         </Text>
       </View>
     );
