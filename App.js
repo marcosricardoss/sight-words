@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, Text } from 'react-native';
 import { 
   createSwitchNavigator, 
   createBottomTabNavigator, 
   createAppContainer } from 'react-navigation';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+import i18n from './src/i18n';
 
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import PracticeScreen from './src/screens/PracticeScreen';
@@ -31,6 +33,10 @@ const AppNavigator = createBottomTabNavigator(
     Home: {
       screen: HomeNavigator,
       navigationOptions: {
+        tabBarLabel: ({tintColor}) =>
+        <Text style={ { fontSize: 10, color: tintColor, textAlign: 'center' } }>
+          {i18n.t('navigation.home')}
+        </Text>,
         tabBarIcon: ({tintColor}) =>
           <FontAwesome5 name="home" size={25} color={tintColor} />
       },
@@ -38,7 +44,10 @@ const AppNavigator = createBottomTabNavigator(
     HighScores: {
       screen: HighScoresScreen,    
       navigationOptions: {
-        tabBarLabel: 'High Scores',
+        tabBarLabel: ({tintColor}) =>
+          <Text style={ { fontSize: 10, color: tintColor, textAlign: 'center' } }>
+            {i18n.t('navigation.highScores')}
+          </Text>,
         tabBarIcon: ({tintColor}) =>
           <FontAwesome5 name="chart-bar" size={25} color={tintColor} />
       },
@@ -46,6 +55,10 @@ const AppNavigator = createBottomTabNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
+        tabBarLabel: ({tintColor}) =>
+        <Text style={ { fontSize: 10, color: tintColor, textAlign: 'center' } }>
+          {i18n.t('navigation.settings')}
+        </Text>,
         tabBarIcon: ({tintColor}) =>
           <FontAwesome5 name="cogs" size={25} color={tintColor} />
       },
@@ -55,7 +68,7 @@ const AppNavigator = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: 'orange',
       inactiveTintColor: 'gray',
-      showLabel: false
+      showLabel: true
     }
   }
 );
