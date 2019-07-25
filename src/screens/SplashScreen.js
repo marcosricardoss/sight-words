@@ -4,6 +4,10 @@ import { View, Text } from 'react-native';
 import i18n from '../i18n';
 import { loadSettings } from '../storage/settingsStorage';
 
+import { connect } from 'react-redux';
+import { fetchHighScores } from '../storage/highScoreStorage';
+import { updateHighScores } from '../actions';
+
 class SplashScreen extends React.Component {
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
@@ -19,10 +23,15 @@ class SplashScreen extends React.Component {
     await this.performTimeConsumingTask();
     // Preload data using AsyncStorage
     const settings = await loadSettings();
+    const highScores = await fetchHighScores();
     
     if (settings !== null) {
       i18n.locale = settings.locale;
       this.props.navigation.navigate('App');
+    }
+
+    if (highScores !== null) {
+      this.props.updateHighScores(highScores);
     }
   }
 
@@ -51,4 +60,6 @@ const styles = {
   }
 }
 
-export default SplashScreen;
+const mapDispatchToProps = ({ updateHighScores });
+
+export default connect(null, mapDispatchToProps)(SplashScreen);

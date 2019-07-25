@@ -5,6 +5,9 @@ import {
   createBottomTabNavigator, 
   createAppContainer } from 'react-navigation';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './src/reducers';
 
 import i18n from './src/i18n';
 
@@ -14,13 +17,6 @@ import ResultsScreen from './src/screens/ResultsScreen';
 import HighScoresScreen from './src/screens/HighScoresScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import SplashScreen from './src/screens/SplashScreen';
-
-
-class App extends Component {
-  render() {
-    return <HomeNavigator />
-  }
-}
 
 const HomeNavigator = createSwitchNavigator({
   Welcome: WelcomeScreen,
@@ -78,6 +74,18 @@ const InitialNavigator = createSwitchNavigator({
   App: AppNavigator
 });
 
-export default createAppContainer(InitialNavigator);
+const AppContainer =  createAppContainer(InitialNavigator);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={createStore(reducers)}>
+        <AppContainer />
+      </Provider>
+    );
+  }
+}
+
+export default App;
 
 AppRegistry.registerComponent('BlitzReading', () => App);

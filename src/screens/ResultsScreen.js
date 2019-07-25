@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Button, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { updateHighScores } from '../actions'
+
 import styles from '../styles';
-import {fetchHighScores, mergeHighScores, saveHighScores } from '../storage/highScoreStorage';
+import {
+  fetchHighScores, 
+  mergeHighScores, 
+  saveHighScores } from '../storage/highScoreStorage';
 import HighScores from '../components/HighScores';
 
-export default class ResultsScreen extends Component {
+
+class ResultsScreen extends Component {
   constructor(props){
     super(props)
     this.state = { totalWords: 0, highScores: []}
@@ -14,6 +21,7 @@ export default class ResultsScreen extends Component {
     const totalWords = this.props.navigation.getParam('totalWords', 0);
     this.setState({ totalWords });
     this.updateHighScores(totalWords);
+    this.props.updateHighScores([{ score: totalWords, createdAt: new Date() }]);
   }
 
   async updateHighScores(totalWords) {
@@ -35,7 +43,7 @@ export default class ResultsScreen extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>Results</Text>
         <Text style={styles.results}>Words count: {this.state.totalWords}</Text>
-        <HighScores data={this.state.highScores} />
+        <HighScores data={this.props.highScores} />
         <Button 
           onPress={() => this.props.navigation.navigate('Practice')}
           title="Practice Again" />
@@ -43,3 +51,11 @@ export default class ResultsScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  highScores: state.highScores
+});
+
+const mapDispachToProps = ({ updateHighScores });
+
+export default connect(mapStateToProps, mapDispachToProps)(ResultsScreen);
