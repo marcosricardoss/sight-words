@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import i18n from '../i18n';
+import { loadSettings } from '../storage/settingsStorage';
+
 class SplashScreen extends React.Component {
   performTimeConsumingTask = async() => {
     return new Promise((resolve) =>
@@ -12,11 +15,13 @@ class SplashScreen extends React.Component {
   }
 
   async componentDidMount() {
-    // Preload data from an external API
+    // Simulating Preload data from an external API
+    await this.performTimeConsumingTask();
     // Preload data using AsyncStorage
-    const data = await this.performTimeConsumingTask();
-
-    if (data !== null) {
+    const settings = await loadSettings();
+    
+    if (settings !== null) {
+      i18n.locale = settings.locale;
       this.props.navigation.navigate('App');
     }
   }
