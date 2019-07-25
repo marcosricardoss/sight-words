@@ -7,6 +7,28 @@
   },
   "home": {
     "welcome": "Welcome to %{appName}!",
-    "start_practice": "Practice"
+    "start_practice": "Practice"  
+  },
+  "practice": {
+    "title": "Practice",
+    "next_word_button": "Next Word"
+  },
+  "results": {
+    "title": "Results",
+    "words_count": "Words count"
+  },
+  "high_scores": {
+    "title": "High Scores"
+  },
+  "settings": {
+    "display_language": "Display language",
+    "about": "About",
+    "save_button": "Save",
+    "name_placeholder": "Your name"
+  },
+  "language_list": {
+    "change_language": "Change language?",
+    "ok": "Change",
+    "cancel": "Cancel"
   }
 }
