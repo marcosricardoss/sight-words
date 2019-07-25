@@ -7,14 +7,21 @@ import {
   ScrollView, 
   StyleSheet,
   TouchableOpacity} from 'react-native';
+import { createStackNavigator } from 'react-navigation';  
 
 import {
   loadSettings,
   saveSettings
 } from '../storage/settingsStorage';
 import SettingsList from '../components/SettingsList'
+import LanguageSelectorScreen from './LanguageSelectorScreen';
+import AboutScreen from './AboutScreen';
 
-export default class SettingsScreen extends Component {
+class SettingsScreen extends Component {
+  static navigationOptions = {
+    title: 'Settings'
+  };
+
   constructor(props) {
     super(props);
 
@@ -40,7 +47,6 @@ export default class SettingsScreen extends Component {
     return(
       <View style={styles.container}>
         <View>
-          <Text style={styles.header}>Settings</Text>
           <ScrollView>
             <View style={styles.inputContainer}>
               <TextInput
@@ -61,7 +67,8 @@ export default class SettingsScreen extends Component {
               </View>
             </View>
             <View style={styles.inputContainer}>
-              <SettingsList />
+              <SettingsList 
+                onPressItem={(screen) => this.props.navigation.navigate(screen)} />
             </View>
           </ScrollView>
         </View>
@@ -69,6 +76,12 @@ export default class SettingsScreen extends Component {
     );
   }
 }
+
+const SettingsNavigator = createStackNavigator({
+  Settings: SettingsScreen,
+  LanguageSelector: LanguageSelectorScreen,
+  About: AboutScreen
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -107,3 +120,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+export default SettingsNavigator;
