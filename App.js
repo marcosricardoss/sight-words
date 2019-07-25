@@ -88,4 +88,4 @@ class App extends Component {
 
 export default App;
 
-AppRegistry.registerComponent('BlitzReading', () => App);
+AppRegistry.registerComponent('SightWords', () => App);
