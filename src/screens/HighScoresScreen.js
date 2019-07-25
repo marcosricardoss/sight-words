@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from '../styles';
-import { fetchHighScores } from '../storage/highScoreStorage';
 import HighScores from '../components/HighScores';
 
 class HighScoresScreen extends React.Component {

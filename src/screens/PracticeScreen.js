@@ -52,7 +52,7 @@ export default class PracticeScreen extends Component {
         <Text style={styles.word}>{this.state.currentWord}</Text>
         <Button 
           onPress={this.onPressNextWord}
-          title="Next Word" />
+          title={i18n.t('practice.next_word_button')} />
       </View>
     );
   }
