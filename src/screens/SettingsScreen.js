@@ -25,7 +25,7 @@ class SettingsScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: ''}
+    this.state = { name: '', locale: 'en' }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,6 +33,13 @@ class SettingsScreen extends Component {
   async componentDidMount() {
     const initialState = await loadSettings();
     this.setState(initialState);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const locale = this.props.navigation.getParam('locale', null);
+    if (locale && prevState.locale !== locale) {
+      this.setState({ locale });
+    }
   }
 
   handleNameChange(name){
@@ -68,7 +75,11 @@ class SettingsScreen extends Component {
             </View>
             <View style={styles.inputContainer}>
               <SettingsList 
-                onPressItem={(screen) => this.props.navigation.navigate(screen)} />
+                onPressItem={(screen) => this.props.navigation.navigate(
+                    screen,
+                    { currentLocale: this.state.locale }
+                  )
+                }/>
             </View>
           </ScrollView>
         </View>
