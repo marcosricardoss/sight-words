@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Button, View, Text } from 'react-native';
 import styles from '../styles';
-import allwords from '../words.en.json';
 import shuffle from '../shuffle';
+
+import i18n from '../i18n';
+
+import enWords from '../locales/words.en.json';
+import deWords from '../locales/words.de.json';
 
 const PRACTICE_TIME = 10 * 1000;
 
@@ -19,6 +23,8 @@ export default class PracticeScreen extends Component {
         totalWords: this.state.totalWords
       })
     ), PRACTICE_TIME);
+
+    const allwords = i18n.locale == 'de' ? deWords : enWords;
 
     const words = shuffle(allwords);
     const currentWord = words.shift();
