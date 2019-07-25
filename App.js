@@ -11,6 +11,7 @@ import PracticeScreen from './src/screens/PracticeScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import HighScoresScreen from './src/screens/HighScoresScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import SplashScreen from './src/screens/SplashScreen';
 
 
 class App extends Component {
@@ -59,6 +60,11 @@ const AppNavigator = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(AppNavigator);
+const InitialNavigator = createSwitchNavigator({
+  Splash: SplashScreen,
+  App: AppNavigator
+});
+
+export default createAppContainer(InitialNavigator);
 
 AppRegistry.registerComponent('BlitzReading', () => App);
