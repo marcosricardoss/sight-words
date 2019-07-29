@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "orange",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "white",
+        "fontSize": 40,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Sight Words
+  </Text>
+</View>
+`;
+
+exports[`<App /> renders the ActivityIndicator component 1`] = `
+<ActivityIndicator
+  animating={true}
+  color="#999999"
+  hidesWhenStopped={true}
+  size="small"
+/>
+`;
+
+exports[`<App /> renders the Image component 1`] = `
+<Image
+  style={
+    Object {
+      "height": 240,
+      "width": 320,
+    }
+  }
+/>
+`;
+
+exports[`<App /> renders the ListView component 1`] = `
+<RCTScrollView
+  dataSource={
+    ListViewDataSource {
+      "items": 3,
+    }
+  }
+  renderRow={[Function]}
+  renderScrollComponent={[Function]}
+>
+  <View>
+    <Text>
+      apple
+    </Text>
+    <Text>
+      banana
+    </Text>
+    <Text>
+      kiwi
+    </Text>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`<App /> renders the TextInput component 1`] = `
+<TextInput
+  allowFontScaling={true}
+  autoCorrect={false}
+  rejectResponderTermination={true}
+  underlineColorAndroid="transparent"
+  value="apple banana kiwi"
+/>
+`;
