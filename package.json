@@ -25,7 +25,7 @@
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
     "braces": "^2.3.2",
-    "expo": "^33.0.0",
+    "expo": "^46.0.14",
     "expo-localization": "^5.0.1",
     "i18n-js": "^3.3.0",
     "mem": "^4.3.0",
